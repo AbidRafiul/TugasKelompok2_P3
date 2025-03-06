@@ -1,7 +1,7 @@
 # 🌟 Project Kelompok 2 🌟
 
 ## 📂 Daftar Isi Folder
-- **Dokumen UAS** 📄
+- **TugasKelompok2_P3** 📄
   - 📘 Login.html
   - 📙 Menu_utama.html
   - 📗 katalog1.html
