@@ -16,7 +16,7 @@
 ---
 
 ## 📝 Deskripsi
-This repository is the collaborative work of **Kelompok 2** for the **UAS Project**. It includes:
+This repository is the collaborative work of **Kelompok 2** for the **Project**. It includes:
 - 📌 Fitur Login.
 - 📌 Fitur Menu awal.
 - 📌 Fitur menu katalog.
