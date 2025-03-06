@@ -1,1 +1,111 @@
-html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penjualan Palawija</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #34495e;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+        nav a:hover {
+            background-color: #1abc9c;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .product {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .product h3 {
+            margin: 10px 0;
+        }
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Penjualan Palawija</h1>
+    </header>
+
+    <nav>
+        <a href="#">Beranda</a>
+        <a href="#">Produk</a>
+        <a href="#">Tentang Kami</a>
+        <a href="#">Kontak</a>
+    </nav>
+
+    <div class="container">
+        <h2>Produk Unggulan</h2>
+        <div class="product-grid">
+            <div class="product">
+                <img src="jagung.jpg" alt="Jagung">
+                <h3>Jagung</h3>
+                <p>Harga: Rp 5.000/kg</p>
+                <button>Beli</button>
+            </div>
+            <div class="product">
+                <img src="kacang.jpg" alt="Kacang">
+                <h3>Kacang</h3>
+                <p>Harga: Rp 12.000/kg</p>
+                <button>Beli</button>
+            </div>
+            <div class="product">
+                <img src="ubi.jpg" alt="Ubi">
+                <h3>Ubi</h3>
+                <p>Harga: Rp 8.000/kg</p>
+                <button>Beli</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 Penjualan Palawija. Semua Hak Dilindungi.</p>
+    </footer>
+
+</body>
+</html>
