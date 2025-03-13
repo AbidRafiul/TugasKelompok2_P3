@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Supplier - Risky Bawang</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #A8BDA4;
+            color: #3E2723;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background: #6E8C64;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 10px;
+        }
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            background: #D6CBC4;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            text-align: center;
+            color: #6E8C64;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+        }
+        th, td {
+            border: 1px solid #BCAAA4;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: #8E7C74;
+            color: white;
+        }
+        .btn {
+            background: #6E8C64;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-edit, .btn-delete, .btn-save {
+            background: #8E7C74;
+            color: white;
+        }
+        .form-container {
+            margin-top: 20px;
+            padding: 15px;
+            background: #D6CBC4;
+            border-radius: 10px;
+        }
+        input, button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 8px;
+            border: 1px solid #BCAAA4;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Data Supplier - Risky Bawang</div>
+    <div class="container">
+        <h2>Data Supplier</h2>
+        <table id="supplierTable">
+            <tr>
+                <th>ID Supplier</th>
+                <th>Nama Supplier</th>
+                <th>Kontak</th>
+                <th>Alamat</th>
+                <th>Aksi</th>
+            </tr>
+        </table>
+        <br>
+        <button class="btn" onclick="showForm()">Tambah Supplier</button>
+        
+        <div class="form-container" id="supplierForm" style="display: none;">
+            <h3>Tambah Data Supplier</h3>
+            <input type="text" id="idSupplier" placeholder="ID Supplier">
+            <input type="text" id="namaSupplier" placeholder="Nama Supplier">
+            <input type="text" id="kontakSupplier" placeholder="Kontak">
+            <input type="text" id="alamatSupplier" placeholder="Alamat">
+            <button class="btn btn-save" onclick="addSupplier()">Simpan</button>
+        </div>
+    </div>
+    
+    <script>
+        function showForm() {
+            document.getElementById("supplierForm").style.display = "block";
+        }
+        
+        function addSupplier() {
+            let id = document.getElementById("idSupplier").value;
+            let nama = document.getElementById("namaSupplier").value;
+            let kontak = document.getElementById("kontakSupplier").value;
+            let alamat = document.getElementById("alamatSupplier").value;
+            
+            if (id && nama && kontak && alamat) {
+                let table = document.getElementById("supplierTable");
+                let newRow = table.insertRow(-1);
+                newRow.innerHTML = `
+                    <td>${id}</td>
+                    <td>${nama}</td>
+                    <td>${kontak}</td>
+                    <td>${alamat}</td>
+                    <td>
+                        <button class='btn btn-edit' onclick='editSupplier(this)'>Edit</button>
+                        <button class='btn btn-delete' onclick='deleteSupplier(this)'>Hapus</button>
+                    </td>
+                `;
+                
+                document.getElementById("idSupplier").value = "";
+                document.getElementById("namaSupplier").value = "";
+                document.getElementById("kontakSupplier").value = "";
+                document.getElementById("alamatSupplier").value = "";
+                document.getElementById("supplierForm").style.display = "none";
+            } else {
+                alert("Harap isi semua data!");
+            }
+        }
+        
+        function deleteSupplier(button) {
+            let row = button.parentElement.parentElement;
+            row.remove();
+        }
+        
+        function editSupplier(button) {
+            let row = button.parentElement.parentElement;
+            let cells = row.getElementsByTagName("td");
+            
+            let id = cells[0].innerText;
+            let nama = cells[1].innerText;
+            let kontak = cells[2].innerText;
+            let alamat = cells[3].innerText;
+            
+            let newId = prompt("Edit ID Supplier:", id);
+            let newNama = prompt("Edit Nama Supplier:", nama);
+            let newKontak = prompt("Edit Kontak:", kontak);
+            let newAlamat = prompt("Edit Alamat:", alamat);
+            
+            if (newId && newNama && newKontak && newAlamat) {
+                cells[0].innerText = newId;
+                cells[1].innerText = newNama;
+                cells[2].innerText = newKontak;
+                cells[3].innerText = newAlamat;
+            }
+        }
+    </script>
+</body>
+</html>
