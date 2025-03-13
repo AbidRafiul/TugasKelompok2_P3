@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaksi - Toko Risky Palawija</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #A8BDA4;
+            color: #3E2723;
+        }
+        .main-content {
+            padding: 20px;
+            margin-left: 240px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            gap: 20px;
+        }
+        .header {
+            padding: 20px;
+            background-color: #6E8C64;
+            color: white;
+            border-radius: 10px;
+            font-size: 24px;
+            text-align: center;
+            width: 100%;
+        }
+        .menu-icon {
+            display: block;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+        }
+        .menu-icon div {
+            background-color: white;
+            height: 4px;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -240px;
+            width: 240px;
+            height: 100%;
+            background-color: #6E8C64;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding-top: 40px;
+            border-radius: 0 10px 10px 0;
+            transition: left 0.3s ease;
+        }
+        .sidebar a {
+            text-decoration: none;
+            padding: 15px;
+            color: white;
+            font-weight: bold;
+            border-bottom: 2px solid #BCAAA4;
+            transition: background-color 0.3s ease;
+        }
+        .sidebar a:hover {
+            background-color: #8E7C74;
+        }
+        .sidebar.show {
+            left: 0;
+        }
+        .content-box {
+            background-color: #D6CBC4;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+        }
+        .content-box h3 {
+            color: #6E8C64;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #BCAAA4;
+        }
+        th {
+            background-color: #8E7C74;
+            color: white;
+        }
+        .summary {
+            padding: 15px;
+            background: #8E7C74;
+            color: white;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            width: 100%;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+        input, select, button {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #6E8C64;
+            width: 90%;
+            max-width: 250px;
+            font-size: 14px;
+        }
+        button {
+            background-color: #6E8C64;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #8E7C74;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-icon" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="sidebar" id="sidebar">
+        <a href="#">Dashboard</a>
+        <a href="#">Metode Transaksi</a>
+        <a href="#">Laporan Transaksi</a>
+        <a href="#">Stok Barang</a>
+    </div>
+    <div class="main-content">
+        <div class="header">Transaksi</div>
+        <div class="content-box">
+            <h3>Metode Transaksi</h3>
+            <form>
+                <select>
+                    <option>Transfer Bank</option>
+                    <option>Tunai</option>
+                    <option>E-Wallet</option>
+                </select>
+                <button type="submit">Pilih</button>
+            </form>
+        </div>
+        <div class="content-box">
+            <h3>Laporan Transaksi</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Tanggal</th>
+                        <th>Metode</th>
+                        <th>Jumlah</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>2025-03-01</td><td>Transfer Bank</td><td>Rp 500.000</td><td>Selesai</td></tr>
+                    <tr><td>2</td><td>2025-03-02</td><td>Tunai</td><td>Rp 250.000</td><td>Selesai</td></tr>
+                    <tr><td>3</td><td>2025-03-03</td><td>E-Wallet</td><td>Rp 750.000</td><td>Pending</td></tr>
+                    <tr><td>4</td><td>2025-03-04</td><td>Transfer Bank</td><td>Rp 1.200.000</td><td>Selesai</td></tr>
+                    <tr><td>5</td><td>2025-03-05</td><td>E-Wallet</td><td>Rp 300.000</td><td>Batal</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="summary">Total Transaksi Hari Ini: Rp 3.000.000</div>
+    </div>
+    <script>
+        function toggleMenu() {
+            document.getElementById('sidebar').classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
