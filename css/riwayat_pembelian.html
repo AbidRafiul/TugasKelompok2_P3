@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transaksi - Toko Risky Palawija</title>
+    <title>Riwayat Pembelian - Toko Risky Palawija</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -18,18 +18,18 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
             min-height: 100vh;
-            gap: 20px;
         }
         .header {
-            padding: 15px;
+            padding: 20px;
             background-color: #6E8C64;
             color: white;
             border-radius: 10px;
-            font-size: 20px;
+            font-size: 24px;
+            margin-bottom: 20px;
             text-align: center;
             width: 100%;
+            max-width: 1000px;
         }
         .menu-icon {
             display: block;
@@ -74,42 +74,44 @@
         .sidebar.show {
             left: 0;
         }
-        .content-box {
+        .table-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 1000px;
+        }
+        .table-card {
             background-color: #D6CBC4;
             border-radius: 10px;
-            padding: 15px;
+            padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
             width: 100%;
-            max-width: 850px;
-            text-align: center;
+            overflow-x: auto;
         }
-        .content-box h3 {
+        .table-card h3 {
+            margin-bottom: 15px;
             color: #6E8C64;
-            font-size: 18px;
+            text-align: center;
         }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
-            font-size: 14px;
+            text-align: center;
         }
         th, td {
-            padding: 8px;
+            padding: 12px 15px;
             border: 1px solid #BCAAA4;
         }
         th {
             background-color: #8E7C74;
             color: white;
         }
-        .summary {
-            padding: 12px;
-            background: #8E7C74;
-            color: white;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: bold;
-            width: 100%;
-            text-align: center;
+        tr:nth-child(even) {
+            background-color: #F1EFE1;
+        }
+        tr:hover {
+            background-color: #D6CBC4;
         }
     </style>
 </head>
@@ -119,53 +121,57 @@
         <div></div>
         <div></div>
     </div>
+
     <div class="sidebar" id="sidebar">
         <a href="#">Dashboard</a>
-        <a href="#">Metode Transaksi</a>
-        <a href="#">Laporan Transaksi</a>
+        <a href="#">Riwayat Pembelian</a>
         <a href="#">Stok Barang</a>
+        <a href="#">Transaksi</a>
     </div>
+
     <div class="main-content">
-        <div class="header">Transaksi</div>
-        <div class="content-box">
-            <h3>Metode Transaksi</h3>
-            <form>
-                <select>
-                    <option>Transfer Bank</option>
-                    <option>Tunai</option>
-                    <option>E-Wallet</option>
-                </select>
-                <button type="submit">Pilih</button>
-            </form>
+        <div class="header">
+            <h1>Riwayat Pembelian Toko Risky Palawija</h1>
         </div>
-        <div class="content-box">
-            <h3>Laporan Transaksi</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Tanggal</th>
-                        <th>Metode</th>
-                        <th>Jumlah</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>1</td><td>2025-03-01</td><td>Transfer Bank</td><td>Rp 500.000</td><td>Selesai</td></tr>
-                    <tr><td>2</td><td>2025-03-02</td><td>Tunai</td><td>Rp 250.000</td><td>Selesai</td></tr>
-                    <tr><td>3</td><td>2025-03-03</td><td>E-Wallet</td><td>Rp 750.000</td><td>Pending</td></tr>
-                    <tr><td>4</td><td>2025-03-04</td><td>Transfer Bank</td><td>Rp 1.200.000</td><td>Selesai</td></tr>
-                    <tr><td>5</td><td>2025-03-05</td><td>E-Wallet</td><td>Rp 300.000</td><td>Batal</td></tr>
-                    <tr><td>6</td><td>2025-03-06</td><td>Tunai</td><td>Rp 400.000</td><td>Selesai</td></tr>
-                    <tr><td>7</td><td>2025-03-07</td><td>Transfer Bank</td><td>Rp 600.000</td><td>Pending</td></tr>
-                </tbody>
-            </table>
+        <div class="table-container">
+            <div class="table-card">
+                <h3>Daftar Riwayat Pembelian</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Tanggal Pembelian</th>
+                            <th>Supplier</th>
+                            <th>Barang</th>
+                            <th>Jumlah</th>
+                            <th>Total Harga</th>
+                            <th>Status Pembayaran</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <script>
+                            let data = "";
+                            for(let i = 1; i <= 20; i++) {
+                                let tanggal = `2025-03-${String(i).padStart(2, '0')}`;
+                                let supplier = `Supplier ${String.fromCharCode(64 + (i % 5) + 1)}`;
+                                let barang = `Barang ${String.fromCharCode(88 + (i % 3))}`;
+                                let jumlah = Math.floor(Math.random() * 100) + 1;
+                                let totalHarga = jumlah * 50000;
+                                let status = (i % 2 === 0) ? "Lunas" : "Belum Lunas";
+                                data += `<tr><td>${i}</td><td>${tanggal}</td><td>${supplier}</td><td>${barang}</td><td>${jumlah}</td><td>Rp ${totalHarga.toLocaleString('id-ID')}</td><td>${status}</td></tr>`;
+                            }
+                            document.write(data);
+                        </script>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="summary">Total Transaksi Hari Ini: Rp 3.000.000</div>
     </div>
+
     <script>
         function toggleMenu() {
-            document.getElementById('sidebar').classList.toggle('show');
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('show');
         }
     </script>
 </body>
