@@ -2,9 +2,7 @@
 
 ## 📂 Daftar Isi Folder
 - **TugasKelompok2_P3** 📄
-  - 📘 Login.html
-  - 📙 Menu_utama.html
-  - 📗 katalog1.html
+membuat project sistem informasi pengadaan barang di toko risky bawang
   
 
 ## 🤝 Contributors
