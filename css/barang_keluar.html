@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Risky Palawija</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F3E8DA;
+            color: #3D322C;
+        }
+        .main-content {
+            padding: 20px;
+            text-align: center;
+        }
+        .header {
+            padding: 20px;
+            background-color: #C49A6C;
+            color: white;
+            border-radius: 10px;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #E0B973;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #C49A6C;
+            text-align: center;
+        }
+        th {
+            background-color: #7A685A;
+            color: white;
+        }
+        td {
+            background-color: #F3E8DA;
+        }
+        tr:hover td {
+            background-color: #C49A6C;
+            color: white;
+        }
+        button {
+            background-color: #7A685A;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 2px;
+        }
+        button:hover {
+            background-color: #C49A6C;
+        }
+        input[type="text"], input[type="number"], input[type="date"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #C49A6C;
+            box-sizing: border-box;
+        }
+    </style>
+<script>
+        let editingRow = null;
+
+        function tambahData(event) {
+            event.preventDefault();
+
+            const namaPengambil = document.querySelector('input[name="nama_pengambil"]').value;
+            const namaBarang = document.querySelector('input[name="nama_barang"]').value;
+            const jumlah = document.querySelector('input[name="jumlah"]').value;
+            const tanggalKeluar = document.querySelector('input[name="tanggal_keluar"]').value;
+
+            if (editingRow) {
+                editingRow.innerHTML = `
+                    <td>${namaPengambil}</td>
+                    <td>${namaBarang}</td>
+                    <td>${jumlah}</td>
+                    <td>${tanggalKeluar}</td>
+                    <td>
+                        <button onclick="editData(this)">Edit</button>
+                        <button onclick="hapusData(this)">Hapus</button>
+                    </td>
+                `;
+                editingRow = null;
+            } else {
+                const table = document.querySelector('table');
+                const newRow = table.insertRow(-1);
+                newRow.innerHTML = `
+                    <td>${namaPengambil}</td>
+                    <td>${namaBarang}</td>
+                    <td>${jumlah}</td>
+                    <td>${tanggalKeluar}</td>
+                    <td>
+                        <button onclick="editData(this)">Edit</button>
+                        <button onclick="hapusData(this)">Hapus</button>
+                    </td>
+                `;
+            }
+
+            document.querySelector('form').reset();
+        }
+
+        function hapusData(button) {
+            const row = button.parentElement.parentElement;
+            row.remove();
+        }
+
+        function editData(button) {
+            editingRow = button.parentElement.parentElement;
+            const cells = editingRow.querySelectorAll('td');
+
+            document.querySelector('input[name="nama_pengambil"]').value = cells[0].textContent;
+            document.querySelector('input[name="nama_barang"]').value = cells[1].textContent;
+            document.querySelector('input[name="jumlah"]').value = cells[2].textContent;
+            document.querySelector('input[name="tanggal_keluar"]').value = cells[3].textContent;
+        }
+    </script>
+</head>
+<body>
+    <div class="main-content">
+        <div class="header">
+            <h2>Form Barang Keluar</h2>
+        </div>
+        <form onsubmit="tambahData(event)" style="background-color: #E0B973; padding: 20px 40px; border-radius: 10px; width: 400px; margin: 20px auto; box-sizing: border-box;">
+            <label>Nama Pengambil:</label>
+            <input type="text" name="nama_pengambil"><br>
+            <label>Nama Barang:</label>
+            <input type="text" name="nama_barang"><br>
+            <label>Jumlah:</label>
+            <input type="number" name="jumlah"><br>
+            <label>Tanggal Keluar:</label>
+            <input type="date" name="tanggal_keluar"><br><br>
+            <button type="submit">Simpan</button>
+        </form>
+
+        <div class="header">
+            <h2>Data Barang Keluar</h2>
+        </div>
+        <table>
+            <tr>
+                <th>Nama Pengambil</th>
+                <th>Nama Barang</th>
+                <th>Jumlah</th>
+                <th>Tanggal Keluar</th>
+                <th>Aksi</th>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
