@@ -9,73 +9,58 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #A8BDA4;
-            color: #3E2723;
-        }
-        .main-content {
-            padding: 20px;
-            margin-left: 240px;
+            background-color: #F3E8DA;
+            color: #3D322C;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-            gap: 20px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 240px;
+            background-color: #7A685A;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 20px;
+            color: white;
+        }
+        .sidebar h2 {
+            text-align: center;
+        }
+        .menu {
+            list-style-type: none;
+            padding: 0;
+        }
+        .menu li {
+            padding: 10px;
+            margin: 5px 0;
+            cursor: pointer;
+            background-color: #C49A6C;
+            text-align: center;
+            border-radius: 5px;
+        }
+        .menu li:hover {
+            background-color: #E0B973;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 260px;
+            padding: 20px;
+            flex-grow: 1;
         }
         .header {
             padding: 20px;
-            background-color: #6E8C64;
+            background-color: #C49A6C;
             color: white;
             border-radius: 10px;
             font-size: 24px;
+            margin-bottom: 20px;
             text-align: center;
-            width: 100%;
-        }
-        .menu-icon {
-            display: block;
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 30px;
-            height: 20px;
-            cursor: pointer;
-        }
-        .menu-icon div {
-            background-color: white;
-            height: 4px;
-            margin: 5px 0;
-            transition: all 0.3s ease;
-        }
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: -240px;
-            width: 240px;
-            height: 100%;
-            background-color: #6E8C64;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            padding-top: 40px;
-            border-radius: 0 10px 10px 0;
-            transition: left 0.3s ease;
-        }
-        .sidebar a {
-            text-decoration: none;
-            padding: 15px;
-            color: white;
-            font-weight: bold;
-            border-bottom: 2px solid #BCAAA4;
-            transition: background-color 0.3s ease;
-        }
-        .sidebar a:hover {
-            background-color: #8E7C74;
-        }
-        .sidebar.show {
-            left: 0;
         }
         .content-box {
-            background-color: #D6CBC4;
+            background-color: #E0B973;
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
@@ -84,7 +69,7 @@
             text-align: center;
         }
         .content-box h3 {
-            color: #6E8C64;
+            color: #3D322C;
         }
         table {
             width: 100%;
@@ -93,59 +78,28 @@
         }
         th, td {
             padding: 12px;
-            border: 1px solid #BCAAA4;
+            border: 1px solid #C49A6C;
         }
         th {
-            background-color: #8E7C74;
+            background-color: #7A685A;
             color: white;
         }
-        .summary {
-            padding: 15px;
-            background: #8E7C74;
-            color: white;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            width: 100%;
-            text-align: center;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            align-items: center;
-        }
-        input, select, button {
-            padding: 8px;
-            border-radius: 5px;
-            border: 1px solid #6E8C64;
-            width: 90%;
-            max-width: 250px;
-            font-size: 14px;
-        }
-        button {
-            background-color: #6E8C64;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #8E7C74;
+        td {
+            background-color: #F3E8DA;
         }
     </style>
 </head>
 <body>
-    <div class="menu-icon" onclick="toggleMenu()">
-        <div></div>
-        <div></div>
-        <div></div>
+    <div class="sidebar">
+        <h2>Menu</h2>
+        <ul class="menu">
+            <li onclick="navigate('dashboard')">Dashboard</li>
+            <li onclick="navigate('riwayat')">Riwayat Pembelian</li>
+            <li onclick="navigate('transaksi')">Transaksi</li>
+            <li onclick="navigate('profil')">Profil</li>
+        </ul>
     </div>
-    <div class="sidebar" id="sidebar">
-        <a href="#">Dashboard</a>
-        <a href="#">Metode Transaksi</a>
-        <a href="#">Laporan Transaksi</a>
-        <a href="#">Stok Barang</a>
-    </div>
+    
     <div class="main-content">
         <div class="header">Transaksi</div>
         <div class="content-box">
@@ -180,12 +134,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="summary">Total Transaksi Hari Ini: Rp 3.000.000</div>
+        <div class="content-box">Total Transaksi Hari Ini: Rp 3.000.000</div>
     </div>
-    <script>
-        function toggleMenu() {
-            document.getElementById('sidebar').classList.toggle('show');
-        }
-    </script>
 </body>
 </html>
