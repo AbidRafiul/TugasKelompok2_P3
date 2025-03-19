@@ -46,7 +46,7 @@
 
         /* Main Content */
         .main-content {
-            margin-left: 260px;
+            margin-left: 260px; /* Space for sidebar */
             padding: 20px;
             flex-grow: 1;
         }
@@ -67,9 +67,11 @@
             width: 100%;
             max-width: 900px;
             text-align: center;
+            margin: 20px auto; /* Center the content box */
         }
         .content-box h3 {
             color: #3D322C;
+            margin-bottom: 15px; /* Add space below the heading */
         }
         table {
             width: 100%;
@@ -86,6 +88,11 @@
         }
         td {
             background-color: #F3E8DA;
+        }
+        .total {
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -134,7 +141,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="content-box">Total Transaksi Hari Ini: Rp 3.000.000</div>
+        <div class="content-box total">Total Transaksi Hari Ini: Rp 3.000.000</div>
     </div>
 </body>
 </html>
