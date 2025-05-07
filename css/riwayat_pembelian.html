@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riwayat Pembelian - Toko Risky Palawija</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F3E8DA;
+            color: #3D322C;
+            display: flex;
+        }
+        /* Sidebar */
+        .sidebar {
+            width: 240px;
+            background-color: #7A685A;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 20px;
+            color: white;
+        }
+        .sidebar h2 {
+            text-align: center;
+        }
+        .menu {
+            list-style-type: none;
+            padding: 0;
+        }
+        .menu li {
+            padding: 10px;
+            margin: 5px 0;
+            cursor: pointer;
+            background-color: #C49A6C;
+            text-align: center;
+            border-radius: 5px;
+        }
+        .menu li:hover {
+            background-color: #E0B973;
+        }
+        /* Konten Utama */
+        .main-content {
+            margin-left: 260px;
+            padding: 20px;
+            flex-grow: 1;
+        }
+        .header {
+            padding: 20px;
+            background-color: #C49A6C;
+            color: white;
+            border-radius: 10px;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .table-container {
+            max-width: 1000px;
+            margin: auto;
+        }
+        .table-card {
+            background-color: #E0B973;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        th, td {
+            padding: 12px 15px;
+            border: 1px solid #C49A6C;
+        }
+        th {
+            background-color: #7A685A;
+            color: white;
+        }
+        td {
+            background-color: #F3E8DA;
+            cursor: pointer;
+        }
+        tr:hover td {
+            background-color: #C49A6C;
+            color: white;
+        }
+        /* Tombol Aksi */
+        .bottom-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .btn-add {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .btn-edit {
+            background-color: #FFD700;
+        }
+        .btn-delete {
+            background-color: #FF6347;
+            color: white;
+        }
+        /* Form */
+        .form-container {
+            display: none;
+            background-color: #E0B973;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 10px;
+            text-align: center;
+        }
+        .form-container input, .form-container select {
+            padding: 8px;
+            margin: 5px;
+            width: 150px;
+        }
+        .selected {
+            background-color: #FFCF99 !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Menu</h2>
+        <ul class="menu">
+            <li onclick="navigate('dashboard')">Dashboard</li>
+            <li onclick="navigate('riwayat')">Riwayat Pembelian</li>
+            <li onclick="navigate('transaksi')">Transaksi</li>
+            <li onclick="navigate('profil')">Profil</li>
+        </ul>
+    </div>
+
+    <!-- Konten Utama -->
+    <div class="main-content">
+        <div class="header">
+            <h1>Riwayat Pembelian Toko Risky Palawija</h1>
+        </div>
+
+        <div class="table-container">
+            <div class="table-card">
+                <h3>Daftar Riwayat Pembelian</h3>
+                <table id="purchaseTable">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Tanggal Pembelian</th>
+                            <th>Supplier</th>
+                            <th>Barang</th>
+                            <th>Jumlah</th>
+                            <th>Total Harga</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Tombol di bawah tabel -->
+        <div class="bottom-buttons">
+            <button class="btn btn-add" onclick="toggleForm()">Tambah Data</button>
+            <button class="btn btn-edit" onclick="editSelected()">Edit</button>
+            <button class="btn btn-delete" onclick="deleteSelected()">Hapus</button>
+        </div>
+
+        <!-- Form Tambah Data -->
+        <div class="form-container" id="form-container">
+            <input type="text" id="tanggal" placeholder="Tanggal (YYYY-MM-DD)">
+            <input type="text" id="supplier" placeholder="Supplier">
+            <input type="text" id="barang" placeholder="Barang">
+            <input type="number" id="jumlah" placeholder="Jumlah">
+            <input type="number" id="harga" placeholder="Total Harga">
+            <select id="status">
+                <option value="Lunas">Lunas</option>
+                <option value="Belum Lunas">Belum Lunas</option>
+            </select>
+            <button class="btn btn-add" onclick="addData()">Simpan</button>
+        </div>
+    </div>
+
+<script>
+    let tableData = [
+        {tanggal: "2025-03-10", supplier: "Supplier A", barang: "Barang X", jumlah: 10, harga: 500000, status: "Lunas"},
+        {tanggal: "2025-03-11", supplier: "Supplier B", barang: "Barang Y", jumlah: 20, harga: 1000000, status: "Belum Lunas"},
+    ];
+    
+    let selectedRow = null;
+
+    function renderTable() {
+        let tableBody = document.getElementById("tableBody");
+        tableBody.innerHTML = "";
+        tableData.forEach((data, index) => {
+            let row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${data.tanggal}</td>
+                <td>${data.supplier}</td>
+                <td>${data.barang}</td>
+                <td>${data.jumlah}</td>
+                <td>Rp ${data.harga.toLocaleString('id-ID')}</td>
+                <td>${data.status}</td>
+            `;
+            row.onclick = function () {
+                document.querySelectorAll("tr").forEach(tr => tr.classList.remove("selected"));
+                row.classList.add("selected");
+                selectedRow = index;
+            };
+            tableBody.appendChild(row);
+        });
+    }
+
+    function toggleForm() {
+        document.getElementById("form-container").style.display = "block";
+    }
+
+    function editSelected() {
+        if (selectedRow === null) return alert("Pilih data untuk diedit!");
+        alert("Mengedit data ke-" + (selectedRow + 1));
+    }
+
+    function deleteSelected() {
+        if (selectedRow === null) return alert("Pilih data untuk dihapus!");
+        tableData.splice(selectedRow, 1);
+        selectedRow = null;
+        renderTable();
+    }
+
+    function navigate(page) {
+        alert("Navigasi ke " + page);
+    }
+
+    renderTable();
+</script>
+
+</body>
+</html>
