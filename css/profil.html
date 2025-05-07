@@ -1,133 +1,182 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id">  
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil Karyawan - Toko Risky Palawija</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #F3E8DA;
-            color: #3D322C;
-            display: flex;
-        }
-        .sidebar {
-            width: 240px;
-            background-color: #7A685A;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            padding: 20px;
-            color: white;
-        }
-        .sidebar h2 {
-            text-align: center;
-        }
-        .menu {
-            list-style-type: none;
-            padding: 0;
-        }
-        .menu li {
-            padding: 10px;
-            margin: 5px 0;
-            cursor: pointer;
-            background-color: #C49A6C;
-            text-align: center;
-            border-radius: 5px;
-        }
-        .menu li:hover {
-            background-color: #E0B973;
-        }
-        .main-content {
-            margin-left: 260px;
-            padding: 20px;
-            flex-grow: 1;
-        }
-        .header {
-            padding: 20px;
-            background-color: #C49A6C;
-            color: white;
-            border-radius: 10px;
-            font-size: 24px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .profile-container {
-            max-width: 800px;
-            margin: auto;
-            background: #E0B973;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-        }
-        .profile-container img {
-            display: block;
-            margin: 0 auto 10px;
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-        }
-        .info {
-            margin: 10px 0;
-            font-size: 18px;
-        }
-        .edit-btn {
-            display: block;
-            margin: 10px auto;
-            padding: 10px;
-            background-color: #7A685A;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .edit-btn:hover {
-            background-color: #C49A6C;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil Toko - Toko Risky</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
-    <div class="sidebar">
-        <h2>Menu</h2>
-        <ul class="menu">
-            <li onclick="navigate('dashboard')">Dashboard</li>
-            <li onclick="navigate('riwayat')">Riwayat Pembelian</li>
-            <li onclick="navigate('transaksi')">Transaksi</li>
-            <li onclick="navigate('profil')">Profil</li>
+
+  <script>
+    if (!localStorage.getItem("isLoggedIn")) {
+      window.location.href = "login.html";
+    }
+  </script>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><i class="bi bi-shop"></i> Toko Risky</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="inventaris.html">Inventaris</a></li>
+          <li class="nav-item"><a class="nav-link" href="transaksi.html">Transaksi</a></li>
+          <li class="nav-item"><a class="nav-link" href="laporan.html">Laporan</a></li>
+          <li class="nav-item"><a class="nav-link" href="supplier.html">Data Supplier</a></li>
+          <li class="nav-item"><a class="nav-link active" href="profil.html">Profil</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" onclick="logout()">
+            <i class="bi bi-box-arrow-right"></i> Logout</a></li>
         </ul>
+      </div>
     </div>
-    
-    <div class="main-content">
-        <div class="header">Profil Karyawan</div>
-        <div class="profile-container">
-            <img src="../gambar/profil.jpg" alt="Foto Profil">
-            <div class="info"><strong>Nama:</strong> Rizky Maulana</div>
-            <div class="info"><strong>Jabatan:</strong> Supervisor</div>
-            <div class="info"><strong>Email:</strong> rizky@example.com</div>
-            <div class="info"><strong>No. Telepon:</strong> 0812-3456-7890</div>
-            <div class="info"><strong>Alamat:</strong> Jl. Merdeka No. 10, Jakarta</div>
-            <div class="info"><strong>ID Karyawan:</strong> KRY-2025001</div>
-            <div class="info"><strong>Departemen:</strong> Manajemen</div>
-            <div class="info"><strong>Tanggal Bergabung:</strong> 10 Januari 2022</div>
-            <div class="info"><strong>Status Kepegawaian:</strong> Aktif</div>
-            <div class="info"><strong>Jumlah Proyek:</strong> 15</div>
-            <div class="info"><strong>Total Jam Kerja:</strong> 1.250 jam</div>
-            <div class="info"><strong>Evaluasi Terakhir:</strong> Sangat Baik</div>
-            <button class="edit-btn" onclick="editProfile()">Edit Profil</button>
+  </nav>
+
+  <!-- Konten Utama -->
+  <div class="container mt-5">
+    <div class="row">
+      <!-- Profil Toko -->
+      <div class="col-md-6 mb-4">
+        <div class="card shadow">
+          <div class="card-header bg-primary text-white">
+            <i class="bi bi-info-circle-fill"></i> Tentang Toko
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Toko Risky Bawang dan Palawija</h5>
+            <p class="card-text"><strong>Filosofi:</strong> Menyediakan rempah terbaik dengan pelayanan terpercaya.</p>
+            <p class="card-text"><strong>Lokasi:</strong> Madiun, Jawa Timur</p>
+          </div>
         </div>
+      </div>
+
+      <!-- Data Pegawai -->
+      <div class="col-md-6 mb-4">
+        <div class="card shadow">
+          <div class="card-header bg-success text-white">
+            <i class="bi bi-person-fill"></i> Data Pegawai
+          </div>
+          <div class="card-body">
+            <div class="d-flex justify-content-between mb-3">
+              <h5 class="mb-0">Daftar Pegawai</h5>
+              <button class="btn btn-sm btn-primary" onclick="openAddModal()">
+                <i class="bi bi-plus-circle"></i> Tambah Pegawai
+              </button>
+            </div>
+            <ul class="list-group list-group-flush" id="pegawai-list">
+              <!-- Data akan dimasukkan oleh JavaScript -->
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <script>
-        function navigate(page) {
-            alert("Navigasi ke " + page);
-        }
-        
-        function editProfile() {
-            alert("Fitur edit profil belum tersedia.");
-        }
-    </script>
+  </div>
+
+  <!-- Modal Tambah/Edit Pegawai -->
+  <div class="modal fade" id="pegawaiModal" tabindex="-1" aria-labelledby="pegawaiModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="pegawaiForm">
+          <div class="modal-header">
+            <h5 class="modal-title" id="pegawaiModalLabel">Tambah/Edit Pegawai</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" id="pegawaiIndex">
+            <div class="mb-3">
+              <label for="pegawaiNama" class="form-label">Nama</label>
+              <input type="text" class="form-control" id="pegawaiNama" required>
+            </div>
+            <div class="mb-3">
+              <label for="pegawaiPosisi" class="form-label">Posisi</label>
+              <input type="text" class="form-control" id="pegawaiPosisi" required>
+            </div>
+            <div class="mb-3">
+              <label for="pegawaiUsername" class="form-label">Username</label>
+              <input type="text" class="form-control" id="pegawaiUsername" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Simpan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function logout() {
+      localStorage.removeItem("isLoggedIn");
+      window.location.href = "login.html";
+    }
+
+    const pegawaiList = [
+      { nama: 'Ahmad', posisi: 'Admin', username: 'ahmad123' }
+    ];
+
+    function renderPegawai() {
+      const list = document.getElementById('pegawai-list');
+      list.innerHTML = '';
+      pegawaiList.forEach((p, i) => {
+        const item = document.createElement('li');
+        item.className = 'list-group-item d-flex justify-content-between align-items-center';
+        item.innerHTML = `
+          <div>
+            <strong>Nama:</strong> ${p.nama}<br>
+            <strong>Posisi:</strong> ${p.posisi}<br>
+            <strong>Username:</strong> ${p.username}
+          </div>
+          <button class="btn btn-sm btn-warning" onclick="openEditModal(${i})">
+            <i class="bi bi-pencil-square"></i> Edit
+          </button>
+        `;
+        list.appendChild(item);
+      });
+    }
+
+    function openAddModal() {
+      document.getElementById('pegawaiForm').reset();
+      document.getElementById('pegawaiIndex').value = '';
+      document.getElementById('pegawaiModalLabel').innerText = 'Tambah Pegawai';
+      new bootstrap.Modal(document.getElementById('pegawaiModal')).show();
+    }
+
+    function openEditModal(index) {
+      const pegawai = pegawaiList[index];
+      document.getElementById('pegawaiNama').value = pegawai.nama;
+      document.getElementById('pegawaiPosisi').value = pegawai.posisi;
+      document.getElementById('pegawaiUsername').value = pegawai.username;
+      document.getElementById('pegawaiIndex').value = index;
+      document.getElementById('pegawaiModalLabel').innerText = 'Edit Pegawai';
+      new bootstrap.Modal(document.getElementById('pegawaiModal')).show();
+    }
+
+    document.getElementById('pegawaiForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const index = document.getElementById('pegawaiIndex').value;
+      const data = {
+        nama: document.getElementById('pegawaiNama').value,
+        posisi: document.getElementById('pegawaiPosisi').value,
+        username: document.getElementById('pegawaiUsername').value,
+      };
+
+      if (index === '') {
+        pegawaiList.push(data);
+      } else {
+        pegawaiList[index] = data;
+      }
+
+      bootstrap.Modal.getInstance(document.getElementById('pegawaiModal')).hide();
+      renderPegawai();
+    });
+
+    renderPegawai();
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
