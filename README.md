@@ -1,28 +1,20 @@
 # 🌟 UAS Kelompok 2 🌟
 
-## 📂 Daftar Isi Folder
-- **Dokumen UAS** 📄
-  - 📘 Dokumentasi Awal Proyek Pengembangan Basis Data Toko Risky Bawang dan Palawija.pdf
-  - 📙 Fitur Database[1].pdf
-  - 📗 LAPORAN TUGAS UAS kelompok 2.pdf
-  - 📕 MANUAL PENGGUNAAN SISTEM MANAJEMEN.pdf
-- **Folder Basic** 📁
-  - 🔧 Codingan composer
-
----
-
 ## Tech Stack
-![Database](https://img.shields.io/badge/database-MySQL-green) ![Framework](https://img.shields.io/badge/framework-Yii2-blue) ![Language](https://img.shields.io/badge/language-PHP-blue) ![Environment](https://img.shields.io/badge/environment-XAMPP-orange) ![Dependencies](https://img.shields.io/badge/dependencies-Composer-yellow)
-
----
+![Database](db_tokorisky) ![Framework](https://getbootstrap.com/)
 
 ## Documentation
 For detailed documentation, refer to the files linked below (written in Indonesian):
 
-- 📘 [Dokumen Awal Proyek](#)
-- 📙 [Fitur Basis Data](#)
-- 📗 [Laporan Tugas UAS](#)
-- 📕 [Manual Penggunaan Sistem](#)
+- 📘 [fitur dashboard](dashborad.php)
+- 📙 [Fitur Login](login.php)
+- 📗 [Fitur Registrasi](register.php)
+- 📕 [Fitur Profil](profil.php)
+- 📕 [Fitur Laporan](laporan.php)
+- 📕 [Fitur Landing Page](index.php)
+- 📕 [Fitur Supplier](supplier.php)
+- 📕 [Fitur Transaksi](transaksi.php)
+- 📕 [Fitur Logout](logout.php)
 
 ---
 
@@ -34,13 +26,6 @@ For detailed documentation, refer to the files linked below (written in Indonesi
 
 ---
 
-## 📝 Deskripsi
-This repository is the collaborative work of **Kelompok 2** for the **UAS Project**. It includes:
-- 📌 Initial project documentation.
-- 📌 Database features.
-- 📌 Group project report.
-- 📌 System usage manual.
-
 We hope this repository provides a clear understanding of our project. 😊
 
 ---
@@ -50,5 +35,5 @@ We hope this repository provides a clear understanding of our project. 😊
    ```bash
    git clone https://github.com/AbidRafiul/UAS_Kelompok2.git
    ```
-2. Open the document files in the "Dokumen UAS" folder.
+2. Open the document files in the "TugasKelompok2" folder.
 3. Follow the system usage manual for further information.
