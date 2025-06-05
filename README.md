@@ -1,9 +1,22 @@
-# 🌟 Project Kelompok 2 🌟
+# 🌟 UAS Kelompok 2 🌟
 
-## 📂 Daftar Isi Folder
-- **TugasKelompok2_P3** 📄
-membuat project sistem informasi pengadaan barang di toko risky bawang
-  
+## Tech Stack
+![Database](db_tokorisky) ![Framework](https://getbootstrap.com/)
+
+## Documentation
+For detailed documentation, refer to the files linked below (written in Indonesian):
+
+- 📘 [fitur dashboard](dashborad.php)
+- 📙 [Fitur Login](login.php)
+- 📗 [Fitur Registrasi](register.php)
+- 📕 [Fitur Profil](profil.php)
+- 📕 [Fitur Laporan](laporan.php)
+- 📕 [Fitur Landing Page](index.php)
+- 📕 [Fitur Supplier](supplier.php)
+- 📕 [Fitur Transaksi](transaksi.php)
+- 📕 [Fitur Logout](logout.php)
+
+---
 
 ## 🤝 Contributors
 | Contributor       | GitHub Profile                                  |
@@ -13,10 +26,14 @@ membuat project sistem informasi pengadaan barang di toko risky bawang
 
 ---
 
-## 📝 Deskripsi
-This repository is the collaborative work of **Kelompok 2** for the **Project**. It includes:
-- 📌 Fitur Login.
-- 📌 Fitur Menu awal.
-- 📌 Fitur menu katalog.
-
 We hope this repository provides a clear understanding of our project. 😊
+
+---
+
+## 🚀 How to Use
+1. Clone this repository locally:
+   ```bash
+   git clone https://github.com/AbidRafiul/UAS_Kelompok2.git
+   ```
+2. Open the document files in the "TugasKelompok2" folder.
+3. Follow the system usage manual for further information.
